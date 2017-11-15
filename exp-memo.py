@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse
 import os
 import subprocess
@@ -17,7 +19,6 @@ if __name__ == '__main__':
             f.write(f"query {args.query[0]}\n")
             f.write(f"comment: {args.comment[0]}\n")
         exec_log_path = os.path.join(args.output_dir[0], "exec.log")
-        print(exec_log_path)
         query = f"/usr/bin/time -v -o {exec_log_path} " + args.query[0]
 
         result = subprocess.run(query, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
